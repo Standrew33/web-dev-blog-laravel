@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use App\Models\Task;
 use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\DB;
@@ -16,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $tasks = DB::table('tasks')->get();
-    return view('welcome', compact('tasks'));
-});
+//Route::get('/', function () {
+//    $tasks = DB::table('tasks')->get();
+//    return view('welcome', compact('tasks'));
+//});
 
 Route::get('hello', function () {
     return view('hello', [
@@ -70,3 +71,6 @@ Route::get('hello5', function () {
 
 Route::get('tasks',[TasksController::class, 'index']);
 Route::get('tasks/{task}',[TasksController::class, 'show']);
+
+Route::get('/', [PostsController::class, 'index']);
+Route::get('/posts/{post}', [PostsController::class, 'show']);
